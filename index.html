@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seedwise — The Financial Wisdom Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Variables de Color (Esquema SeedWise) */
+  :root {
+    --dark-base: #1A1F2B;
+    --dark-surface: #222738;
+    --dark-elevated: #2A2F42;
+    --almond-white: #F7F3E8;
+    --warm-cream: #EDE8D9;
+    --growth-green: #49A078;
+    --horizon-orange: #E3655B;
+    --warm-gold: #C9A96E;
+    --muted-text: rgba(247, 243, 232, 0.6);
+    --muted-dark: rgba(26, 31, 43, 0.6);
+    --border-subtle: rgba(247, 243, 232, 0.08);
+    --border-light: rgba(26, 31, 43, 0.08);
+  }
+
+  /* Estilos Base */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark-base);
+    color: var(--almond-white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Contenedores */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
+  .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 28px; }
+  .text-center { text-align: center; }
+
+  /* Tipografía */
+  h1, h2, h3 { font-family: 'Lora', serif; color: var(--almond-white); font-weight: 600; }
+  h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.15; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.25; }
+  p { font-size: 1.1rem; margin-bottom: 1.2rem; }
+
+  /* Etiquetas */
+  .label-tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--warm-gold);
+    color: var(--warm-gold);
+    margin-bottom: 1rem;
+  }
+
+  /* Botones (CTAs) */
+  .cta-primary {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--horizon-orange);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(227,101,91,0.4);
+  }
+  .cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(227,101,91,0.6);
+  }
+  .cta-sub {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 4px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--almond-white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid rgba(247,243,232,0.3);
+    transition: all 0.3s ease;
+  }
+  .cta-ghost:hover {
+    border-color: var(--almond-white);
+    background: rgba(247,243,232,0.1);
+  }
+
+  .book-buy-btn {
+    display: inline-block;
+    background: transparent;
+    color: var(--dark-base);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--dark-base);
+    transition: all 0.25s ease;
+  }
+  .book-buy-btn:hover {
+    background: var(--dark-base);
+    color: var(--almond-white);
+  }
+
+  /* Secciones Comunes */
+  section { padding: 5rem 0; }
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--warm-gold);
+    margin: 0 auto 2rem;
+    opacity: 0.6;
+  }
+
+  /* --- URGENCY BAR --- */
+  .urgency-bar {
+    background: var(--warm-gold);
+    color: var(--dark-base);
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  /* --- HERO SECTION --- */
+  .hero {
+    background: var(--dark-base);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before { /* Efecto de luz de fondo sutil */
+    content: '';
+    position: absolute;
+    top: -30%; left: -10%;
+    width: 120%; height: 150%;
+    background: radial-gradient(circle at 30% 20%, rgba(73,160,120,0.08) 0%, transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(201,169,110,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text .pretitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--warm-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--growth-green); }
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--muted-text);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .social-proof-strip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .proof-avatars { display: flex; }
+  .proof-avatars span {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--dark-surface);
+    border: 2px solid var(--dark-base);
+    color: var(--warm-gold);
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -10px;
+  }
+  .proof-text { font-size: 0.85rem; color: var(--muted-text); }
+  .proof-text strong { color: var(--warm-gold); }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* 1. MOCKUP MEJORADO: Abanico Hero */
+  .hero-covers-fan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem 0;
+    perspective: 1000px; /* Añade profundidad 3D */
+  }
+  .fan-cover {
+    width: 140px; /* Tamaño ligeramente mayor */
+    border-radius: 6px;
+    box-shadow: -5px 10px 25px rgba(0,0,0,0.5); /* Sombra direccional */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica */
+    cursor: pointer;
+  }
+  .fan-cover:not(:first-child) { margin-left: -40px; } /* Más superposición */
+  
+  /* Rotaciones ajustadas para un abanico más elegante */
+  .fan-1 { transform: rotate(-15deg) translateY(10px) translateZ(-20px); z-index: 1; }
+  .fan-2 { transform: rotate(-5deg) translateY(0px) translateZ(-10px); z-index: 2; }
+  .fan-3 { transform: rotate(5deg) translateY(0px) translateZ(0px); z-index: 3; }
+  .fan-4 { transform: rotate(15deg) translateY(10px) translateZ(10px); z-index: 4; }
+  
+  .fan-cover:hover { 
+      transform: rotate(0deg) scale(1.15) translateY(-10px) translateZ(20px); 
+      z-index: 10; 
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  }
+
+  /* --- AGITATION SECTION --- */
+  .agitation {
+    background: var(--almond-white);
+    color: var(--dark-base);
+  }
+  .agitation .lead {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--dark-base);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .pain-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--horizon-orange);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  .pain-card p { margin-bottom: 0; color: var(--muted-dark); }
+  .pain-card strong { color: var(--dark-base); font-weight: 600; display: block; margin-bottom: 0.5rem; }
+
+  /* --- COMPARISON SECTION --- */
+  .comparison {
+    background: var(--almond-white);
+    padding-top: 2rem;
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .comparison-col {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  }
+  .comparison-col.without { border-top: 6px solid var(--horizon-orange); }
+  .comparison-col.with-sw { border-top: 6px solid var(--growth-green); }
+  .comparison-header {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .comparison-col.without .comparison-header { color: var(--horizon-orange); }
+  .comparison-col.with-sw .comparison-header { color: var(--growth-green); }
+  
+  .comparison-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    color: var(--muted-dark);
+  }
+  .comparison-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+  .without .comparison-icon { background: rgba(227,101,91,0.1); color: var(--horizon-orange); }
+  .with-sw .comparison-icon { background: rgba(73,160,120,0.1); color: var(--growth-green); }
+
+  /* --- BRIDGE SECTION --- */
+  .bridge { background: var(--dark-surface); }
+  .bridge-intro {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--growth-green);
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .bridge h2 { text-align: center; margin-bottom: 1.5rem; }
+  .bridge-desc {
+    text-align: center;
+    color: var(--muted-text);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  .bridge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .bridge-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .bridge-item-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .bridge-item strong { color: var(--warm-gold); display: block; margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .bridge-item p { color: var(--muted-text); margin-bottom: 0; font-size: 0.95rem; }
+
+  /* --- TIMELINE SECTION --- */
+  .timeline-section {
+    background: var(--dark-base);
+    text-align: center;
+  }
+  .timeline-wrapper {
+    max-width: 800px;
+    margin: 4rem auto 0;
+    position: relative;
+  }
+  .timeline-line {
+    position: absolute;
+    top: 15px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--growth-green), var(--warm-gold));
+  }
+  .timeline-stops {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-stop { display: flex; flex-direction: column; align-items: center; }
+  .timeline-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--dark-base);
+    border: 2px solid var(--warm-gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .timeline-dot::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--growth-green);
+  }
+  .timeline-stop-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    color: var(--almond-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .timeline-stop-sub { color: var(--muted-text); font-size: 0.9rem; }
+
+  /* --- THE COLLECTION (Books) --- */
+  .stack { background: var(--almond-white); color: var(--dark-base); }
+  .book-card {
+    background: #fff;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .book-card-inner { display: flex; align-items: stretch; }
+  
+  /* 2. MOCKUP MEJORADO: Individual Books */
+  .book-mockup-col {
+    flex-shrink: 0;
+    width: 280px;
+    background: linear-gradient(135deg, var(--warm-cream) 0%, #e0d8c3 100%); /* Fondo cálido en lugar de oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  /* Efecto 3D para el libro individual */
+  .mockup-3d-container {
+      perspective: 1000px;
+      width: 100%;
+  }
+  .book-3d {
+      width: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(-15deg); /* Gira ligeramente el libro */
+      transition: transform 0.5s ease;
+  }
+  .book-mockup-col:hover .book-3d {
+      transform: rotateY(-5deg) scale(1.05); /* Efecto hover */
+  }
+  .book-3d img {
+      width: 100%;
+      border-radius: 4px 8px 8px 4px;
+      box-shadow: 
+        inset 4px 0 10px rgba(0,0,0,0.1), /* Sombra interior izquierda (lomo) */
+        10px 10px 20px rgba(0,0,0,0.2),  /* Sombra principal */
+        -1px 0 2px rgba(255,255,255,0.8); /* Brillo en el lomo */
+      display: block;
+  }
+
+  .book-content-col { flex: 1; padding: 3rem; }
+  .book-card .age-tag {
+    background: var(--dark-base);
+    color: var(--warm-gold);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .book-title { color: var(--dark-base); margin-bottom: 0.2rem; }
+  .book-subtitle { color: var(--growth-green); font-style: italic; font-weight: 600; margin-bottom: 1rem; }
+  .book-format { color: var(--muted-dark); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .fascination {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 1rem;
+    color: var(--dark-base);
+  }
+  .fascination::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--horizon-orange);
+    font-weight: bold;
+  }
+  .book-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+  }
+  .book-price-tag { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 700; color: var(--dark-base); }
+  .price-label { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--muted-dark); font-weight: 400; }
+  .or-bundle-note { text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--growth-green); font-weight: 600; }
+  .or-bundle-note a { color: var(--horizon-orange); text-decoration: none; }
+  
+  /* --- 4. SNEAK PEEK (Inside the Pages) --- */
+  .sneak-peek { background: var(--dark-base); text-align: center; }
+  .sneak-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .sneak-card {
+    background: transparent;
+  }
+  /* Estilo mejorado para las páginas interiores */
+  .page-mockup {
+      background: #ffffff;
+      border-radius: 4px;
+      padding: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      position: relative;
+      transition: transform 0.3s ease;
+  }
+  .page-mockup:hover {
+      transform: translateY(-10px);
+  }
+  .page-mockup img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #eee;
+      display: block;
+  }
+  .sneak-caption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--muted-text);
+    font-style: italic;
+  }
+
+  /* --- 3. MOCKUP MEJORADO: Colección Completa (Antes Offer) --- */
+  .complete-collection {
+    background: var(--almond-white);
+    padding: 6rem 0;
+    text-align: center;
+  }
+  .collection-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 3rem;
+  }
+  /* Diseño apilado para los 4 libros */
+  .books-stack-mockup {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      margin: 0 auto 2rem;
+      perspective: 1200px;
+  }
+  .stacked-book {
+      position: absolute;
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: -5px 15px 30px rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+  }
+  /* Posicionamiento en cascada hacia arriba */
+  .stacked-book:nth-child(1) { bottom: 0; left: 0; z-index: 4; transform: translateZ(40px); }
+  .stacked-book:nth-child(2) { bottom: 30px; left: 15px; z-index: 3; transform: translateZ(30px) scale(0.95); opacity: 0.95;}
+  .stacked-book:nth-child(3) { bottom: 60px; left: 30px; z-index: 2; transform: translateZ(20px) scale(0.9); opacity: 0.9;}
+  .stacked-book:nth-child(4) { bottom: 90px; left: 45px; z-index: 1; transform: translateZ(10px) scale(0.85); opacity: 0.85;}
+  
+  .books-stack-mockup:hover .stacked-book {
+      /* Efecto de separación al pasar el ratón */
+      transform: translateZ(50px) translateY(-20px);
+  }
+  .books-stack-mockup:hover .stacked-book:nth-child(2) { left: 40px; }
+  .books-stack-mockup:hover .stacked-book:nth-child(3) { left: 80px; }
+  .books-stack-mockup:hover .stacked-book:nth-child(4) { left: 120px; }
+
+  .stacked-book img {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* --- OFFER SECTION (Gumroad Integration Ready) --- */
+  .offer {
+    background: var(--dark-base);
+    text-align: center;
+    position: relative;
+  }
+  .offer-box {
+    background: var(--dark-surface);
+    border: 2px solid var(--warm-gold);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+  }
+  .mini-stack {
+    text-align: left;
+    margin: 2rem auto;
+    background: rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  .mini-stack-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: var(--almond-white);
+  }
+  .mini-stack-item:last-child { border-bottom: none; }
+  .item-value { color: var(--muted-text); }
+  .offer-price-area { margin: 2rem 0; }
+  .price-strike { text-decoration: line-through; color: var(--muted-text); font-size: 1.2rem; }
+  .offer-price-new { font-family: 'Lora', serif; font-size: 4rem; color: var(--warm-gold); font-weight: 700; line-height: 1; }
+  .gumroad-note { font-size: 0.8rem; color: var(--muted-text); margin-top: 1rem; }
+
+  /* --- FOOTER --- */
+  footer {
+    background: #11141c;
+    color: var(--muted-text);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    .hero-layout { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+    .hero-buttons { justify-content: center; }
+    .social-proof-strip { justify-content: center; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .bridge-grid { grid-template-columns: 1fr; }
+    .timeline-stops { flex-direction: column; gap: 2rem; align-items: flex-start; padding-left: 2rem; }
+    .timeline-line { width: 2px; height: 100%; top: 0; left: 16px; }
+    .timeline-stop { flex-direction: row; gap: 1rem; text-align: left; }
+    .timeline-dot { margin-bottom: 0; }
+    .book-card-inner { flex-direction: column; }
+    .book-mockup-col { width: 100%; padding: 2rem 0; }
+    .book-content-col { padding: 2rem; }
+    .sneak-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="urgency-bar">
+  &#x1F331;&nbsp; <strong>The Seedwise Collection</strong> &mdash; Four volumes. Ages 3 to 18. Start building financial confidence tonight.
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-layout">
+    <div class="hero-text">
+      <p class="pretitle">Seedwise Collection &middot; 4 Volumes</p>
+      <h1>Give Your Child the<br>Financial <em>Head Start</em><br>School Never Will</h1>
+      <p class="subtitle">The complete age-by-age roadmap — from first coins at age 3 to first investments at 18. Four volumes of ready-to-use conversations and family exercises.</p>
+
+      <div class="social-proof-strip">
+        <div class="proof-avatars">
+          <span>J</span><span>D</span><span>S</span><span>M</span><span>+</span>
+        </div>
+        <span class="proof-text">Trusted by <strong>1,200+ families</strong></span>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#order" class="cta-primary">
+          Get the Collection &mdash; $57
+          <span class="cta-sub">Instant Access</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-covers-fan">
+          <!-- REEMPLAZAR SRC CON LAS URLS DE TUS PORTADAS -->
+          <img src="https://via.placeholder.com/300x400/49A078/ffffff?text=First+Seeds" alt="First Seeds" class="fan-cover fan-1">
+          <img src="https://via.placeholder.com/300x400/E3655B/ffffff?text=Growing+Roots" alt="Growing Roots" class="fan-cover fan-2">
+          <img src="https://via.placeholder.com/300x400/C9A96E/ffffff?text=Wings+to+Decide" alt="Wings to Decide" class="fan-cover fan-3">
+          <img src="https://via.placeholder.com/300x400/2A2F42/ffffff?text=Taking+Flight" alt="Taking Flight" class="fan-cover fan-4">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGITATION -->
+<section class="agitation">
+  <div class="container-narrow">
+    <p class="lead">There's a quiet confidence that comes from knowing exactly what to say about money — at every age.</p>
+
+    <div class="pain-card">
+      <p><strong>Financial confidence isn't something children absorb on their own — it's something they learn at home.</strong> Schools teach math, science, and history. But budgeting, investing, and smart decision-making? That education starts with you. And when you have the right framework, it becomes one of the most rewarding conversations you'll ever lead.</p>
+    </div>
+    <div class="pain-card">
+      <p><strong>You don't need to be a financial expert to raise one.</strong> What you need is a clear structure — age-appropriate language, guided activities, and conversations designed to build on each other over time. That's the roadmap Seedwise provides. No guesswork. No awkward silences. Just a path forward you can trust.</p>
+    </div>
+    <div class="pain-card">
+      <p><strong>The earlier you begin, the more natural it becomes.</strong> A 5-year-old who learns saving through play becomes a 13-year-old who questions impulse purchases — and an 18-year-old who enters adulthood with habits most adults wish they'd built sooner. Every stage builds on the last.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <div class="container">
+    <div class="comparison-grid">
+      <div class="comparison-col without">
+        <div class="comparison-header" style="color:var(--horizon-orange);">The Default Approach</div>
+        <div class="comparison-item"><div class="comparison-icon">&times;</div><span>Financial lessons happen randomly — or not at all</span></div>
+        <div class="comparison-item"><div class="comparison-icon">&times;</div><span>Money conversations feel vague because there's no clear framework to follow</span></div>
+        <div class="comparison-item"><div class="comparison-icon">&times;</div><span>You wonder what's age-appropriate and what might be too much, too soon</span></div>
+        <div class="comparison-item"><div class="comparison-icon">&times;</div><span>At 18, they're starting from scratch with credit, taxes, and budgeting</span></div>
+      </div>
+
+      <div class="comparison-col with-sw">
+        <div class="comparison-header" style="color:var(--growth-green);">The Seedwise Approach</div>
+        <div class="comparison-item"><div class="comparison-icon">&#10003;</div><span>Every stage has a clear, structured plan — from age 3 through 18</span></div>
+        <div class="comparison-item"><div class="comparison-icon">&#10003;</div><span>You have ready-made scripts and activities — no guesswork, no awkward silences</span></div>
+        <div class="comparison-item"><div class="comparison-icon">&#10003;</div><span>Each volume matches your child's developmental stage with precision</span></div>
+        <div class="comparison-item"><div class="comparison-icon">&#10003;</div><span>At 18, they leave home with the financial confidence most adults are still building</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<section class="bridge">
+  <div class="container">
+    <p class="bridge-intro">Your family's financial education — structured, simplified, ready.</p>
+    <h2>The Seedwise Collection</h2>
+    <p class="bridge-desc">Four volumes designed to grow with your child through every stage — giving you the exact language, proven structure, and hands-on exercises.</p>
+
+    <div class="bridge-grid">
+      <div class="bridge-item">
+        <strong style="color:var(--growth-green);">No Finance Degree Required</strong>
+        <p>Every concept is distilled into clear conversations and hands-on activities you can lead at home.</p>
+      </div>
+      <div class="bridge-item">
+        <strong style="color:var(--growth-green);">It Grows When They Grow</strong>
+        <p>Four developmental stages. Four matched volumes. The lessons meet your child exactly where they are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <h2>One Roadmap. Four Stages.</h2>
+    <div class="timeline-wrapper">
+      <div class="timeline-line"></div>
+      <div class="timeline-stops">
+        <div class="timeline-stop">
+          <div class="timeline-dot"></div>
+          <div class="timeline-stop-label" style="color:var(--warm-gold);">Plant</div>
+          <div class="timeline-stop-sub">Ages 3–5</div>
+        </div>
+        <div class="timeline-stop">
+          <div class="timeline-dot"></div>
+          <div class="timeline-stop-label" style="color:var(--warm-gold);">Grow</div>
+          <div class="timeline-stop-sub">Ages 6–9</div>
+        </div>
+        <div class="timeline-stop">
+          <div class="timeline-dot"></div>
+          <div class="timeline-stop-label" style="color:var(--warm-gold);">Empower</div>
+          <div class="timeline-stop-sub">Ages 10–13</div>
+        </div>
+        <div class="timeline-stop">
+          <div class="timeline-dot"></div>
+          <div class="timeline-stop-label" style="color:var(--warm-gold);">Fly</div>
+          <div class="timeline-stop-sub">Ages 14–18+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE COLLECTION (INDIVIDUAL BOOKS) -->
+<section class="stack" id="books">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem;">
+      <h2 style="color:var(--dark-base);">The Collection</h2>
+    </div>
+
+    <!-- BOOK 1 -->
+    <div class="book-card">
+      <div class="book-card-inner">
+        <div class="book-mockup-col">
+          <div class="mockup-3d-container">
+              <div class="book-3d">
+                  <!-- REEMPLAZAR SRC -->
+                  <img src="https://via.placeholder.com/400x550/49A078/ffffff?text=First+Seeds+Cover" alt="First Seeds Cover">
+              </div>
+          </div>
+        </div>
+        <div class="book-content-col">
+          <span class="age-tag">Vol. 1 &middot; Ages 3–5</span>
+          <h2 class="book-title">First Seeds</h2>
+          <p class="book-subtitle">Where the language of money begins</p>
+          <div class="fascination">The "3-Jar System" that replaces the traditional piggy bank — and teaches your toddler to save, share, and spend with purpose from their very first dollar.</div>
+          <div class="fascination">The grocery store game that helps a 4-year-old understand needs vs. wants.</div>
+          <div class="book-footer">
+            <div class="book-price-tag">$19</div>
+            <a href="#order" class="book-buy-btn">Get This Volume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOK 2 -->
+    <div class="book-card">
+      <div class="book-card-inner">
+        <div class="book-mockup-col">
+          <div class="mockup-3d-container">
+              <div class="book-3d">
+                   <!-- REEMPLAZAR SRC -->
+                  <img src="https://via.placeholder.com/400x550/E3655B/ffffff?text=Growing+Roots+Cover" alt="Growing Roots Cover">
+              </div>
+          </div>
+        </div>
+        <div class="book-content-col">
+          <span class="age-tag">Vol. 2 &middot; Ages 6–9</span>
+          <h2 class="book-title">Growing Roots</h2>
+          <p class="book-subtitle">When earning, saving, and sharing take shape</p>
+          <div class="fascination">The "Mini-Business Weekend" blueprint that sparks your 7-year-old's entrepreneurial thinking.</div>
+          <div class="fascination">How to explain compound interest to a second-grader using a jar of rice and ten minutes.</div>
+          <div class="book-footer">
+            <div class="book-price-tag">$19</div>
+            <a href="#order" class="book-buy-btn">Get This Volume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Añadir Libro 3 y 4 siguiendo la misma estructura superior -->
+
+  </div>
+</section>
+
+<!-- SNEAK PEEK (INSIDE THE PAGES) -->
+<section class="sneak-peek">
+  <div class="container">
+    <h2>A Look Inside the Collection</h2>
+    <p style="color:var(--muted-text);">Beautifully designed to be read together or independently.</p>
+    
+    <div class="sneak-grid">
+      <div class="sneak-card">
+        <div class="page-mockup">
+            <!-- REEMPLAZAR SRC CON IMAGEN DE PAGINA INTERIOR -->
+            <img src="https://via.placeholder.com/400x500/f0f0f0/333333?text=Page+Content+Example" alt="Inside page example">
+        </div>
+        <div class="sneak-caption">Clear, jargon-free explanations</div>
+      </div>
+      <div class="sneak-card">
+        <div class="page-mockup">
+             <!-- REEMPLAZAR SRC CON IMAGEN DE PAGINA INTERIOR -->
+            <img src="https://via.placeholder.com/400x500/f0f0f0/333333?text=Activity+Worksheet" alt="Activity example">
+        </div>
+        <div class="sneak-caption">Engaging, hands-on family activities</div>
+      </div>
+      <div class="sneak-card">
+        <div class="page-mockup">
+             <!-- REEMPLAZAR SRC CON IMAGEN DE PAGINA INTERIOR -->
+            <img src="https://via.placeholder.com/400x500/f0f0f0/333333?text=Parent+Guide" alt="Parent guide example">
+        </div>
+        <div class="sneak-caption">"Parent Scripts" for hard questions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLETE COLLECTION (NUEVO) -->
+<section class="complete-collection" id="order">
+    <div class="container">
+        <h2 style="color:var(--dark-base);">Every Stage. One Simple Decision.</h2>
+        
+        <div class="collection-showcase">
+            <div class="books-stack-mockup">
+                <!-- REEMPLAZAR SRC CON LAS URLS DE TUS PORTADAS -->
+                <div class="stacked-book"><img src="https://via.placeholder.com/300x420/2A2F42/ffffff?text=Taking+Flight" alt="Book 4"></div>
+                <div class="stacked-book"><img src="https://via.placeholder.com/300x420/C9A96E/ffffff?text=Wings+to+Decide" alt="Book 3"></div>
+                <div class="stacked-book"><img src="https://via.placeholder.com/300x420/E3655B/ffffff?text=Growing+Roots" alt="Book 2"></div>
+                <div class="stacked-book"><img src="https://via.placeholder.com/300x420/49A078/ffffff?text=First+Seeds" alt="Book 1"></div>
+            </div>
+        </div>
+
+        <div class="offer-box">
+          <h3 style="margin-bottom: 1rem;">The Complete Seedwise Collection</h3>
+          
+          <div class="mini-stack">
+            <div class="mini-stack-item"><span>First Seeds (Ages 3-5)</span><span class="item-value">$19</span></div>
+            <div class="mini-stack-item"><span>Growing Roots (Ages 6-9)</span><span class="item-value">$19</span></div>
+            <div class="mini-stack-item"><span>Wings to Decide (Ages 10-13)</span><span class="item-value">$19</span></div>
+            <div class="mini-stack-item"><span>Taking Flight (Ages 14-18+)</span><span class="item-value">$19</span></div>
+          </div>
+          
+          <div class="offer-price-area">
+            <div class="price-strike">Total Value: $76</div>
+            <div class="offer-price-new">$57</div>
+          </div>
+          
+          <!-- BOTÓN PARA GUMROAD (Paso 3) -->
+          <a href="#" class="cta-primary" style="width: 100%;">
+            Get Instant Access Now
+            <span class="cta-sub">Secure checkout via Gumroad</span>
+          </a>
+          <p class="gumroad-note">You will receive an immediate download link for all 4 PDF volumes.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 SeedWise. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
