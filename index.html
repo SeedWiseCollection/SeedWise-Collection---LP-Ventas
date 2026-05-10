@@ -62,7 +62,7 @@
     --growth-green: #49A078;
     --horizon-orange: #E3655B;
     --warm-gold: #C9A96E;
-    --muted-text: rgba(247, 243, 232, 0.6);
+    --muted-text: rgba(247, 243, 232, 0.75);
     --muted-dark: rgba(26, 31, 43, 0.6);
     --border-subtle: rgba(247, 243, 232, 0.08);
     --border-light: rgba(26, 31, 43, 0.08);
@@ -121,17 +121,18 @@
     background: var(--horizon-orange);
     color: #fff;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 0.92rem;
     font-weight: 700;
-    padding: 18px 44px;
-    border-radius: 6px;
+    padding: 18px 40px;
+    border-radius: 8px;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 24px rgba(227,101,91,0.3);
+    text-align: center;
   }
   .cta-primary:hover {
     transform: translateY(-2px);
@@ -266,9 +267,13 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 32px;
+    background: rgba(247,243,232,0.05);
+    border: 1px solid rgba(247,243,232,0.1);
+    border-radius: 10px;
+    padding: 14px 20px;
   }
-  .proof-text { font-size: 0.8rem; color: var(--muted-text); }
-  .proof-text strong { color: var(--warm-gold); }
+  .proof-text { font-size: 0.88rem; color: rgba(247,243,232,0.88); font-weight: 400; }
+  .proof-text strong { color: var(--warm-gold); font-weight: 600; }
   .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 
   .hero-visual {
@@ -631,7 +636,7 @@
      ═══════════════════════════ */
   
   .sneak-peek {
-    background: var(--dark-base);
+    background: #1E2433;
     text-align: center;
   }
   .sneak-grid {
@@ -642,7 +647,7 @@
   }
   .sneak-card {
     background: var(--dark-surface);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid rgba(247,243,232,0.08);
     border-radius: 12px;
     overflow: hidden;
   }
@@ -661,10 +666,11 @@
     line-height: 1.5;
   }
   .sneak-caption {
-    padding: 14px 16px;
-    font-size: 0.82rem;
-    color: var(--muted-text);
+    padding: 16px 18px;
+    font-size: 0.84rem;
+    color: rgba(247,243,232,0.8);
     font-weight: 300;
+    line-height: 1.6;
   }
 
   /* ═══════════════════════════
@@ -789,7 +795,7 @@
     letter-spacing: 0;
     margin-bottom: 8px;
   }
-  .faq-item p { margin-bottom: 0; font-size: 0.96rem; color: rgba(26,31,43,0.62); line-height: 1.75; }
+  .faq-item p { margin-bottom: 0; font-size: 0.96rem; color: rgba(26,31,43,0.72); line-height: 1.75; }
 
   /* ═══════════════════════════
      FINAL CTA (Dark — letter)
@@ -1105,7 +1111,7 @@
             <div class="book-price-tag"><span class="price-label">Individual volume</span>$19</div>
             <a href="https://seedwise.gumroad.com/l/fuhqyq" class="book-buy-btn" data-gumroad-overlay-checkout="true">Get This Volume &mdash; $19</a>
           </div>
-          <p class="or-bundle-note">Or <a href="https://seedwisecollection.com/lpsales">unlock the complete collection for $57</a> — save 25%</p>
+          <p class="or-bundle-note">Or <a href="https://seedwise.gumroad.com/l/ocgooj" data-gumroad-overlay-checkout="true">unlock the complete collection for $57</a> — save 25%</p>
         </div>
       </div>
     </div>
@@ -1126,7 +1132,7 @@
             <div class="book-price-tag"><span class="price-label">Individual volume</span>$19</div>
             <a href="https://seedwise.gumroad.com/l/hdvdc" class="book-buy-btn" data-gumroad-overlay-checkout="true">Get This Volume &mdash; $19</a>
           </div>
-          <p class="or-bundle-note">Or <a href="https://seedwisecollection.com/lpsales">unlock the complete collection for $57</a> — save 25%</p>
+          <p class="or-bundle-note">Or <a href="https://seedwise.gumroad.com/l/ocgooj" data-gumroad-overlay-checkout="true">unlock the complete collection for $57</a> — save 25%</p>
         </div>
       </div>
     </div>
@@ -1147,7 +1153,7 @@
             <div class="book-price-tag"><span class="price-label">Individual volume</span>$19</div>
             <a href="https://seedwise.gumroad.com/l/kzwscr" class="book-buy-btn" data-gumroad-overlay-checkout="true">Get This Volume &mdash; $19</a>
           </div>
-          <p class="or-bundle-note">Or <a href="https://seedwisecollection.com/lpsales">unlock the complete collection for $57</a> — save 25%</p>
+          <p class="or-bundle-note">Or <a href="https://seedwise.gumroad.com/l/ocgooj" data-gumroad-overlay-checkout="true">unlock the complete collection for $57</a> — save 25%</p>
         </div>
       </div>
     </div>
@@ -1168,7 +1174,7 @@
             <div class="book-price-tag"><span class="price-label">Individual volume</span>$19</div>
             <a href="https://seedwise.gumroad.com/l/ujaqbc" class="book-buy-btn" data-gumroad-overlay-checkout="true">Get This Volume &mdash; $19</a>
           </div>
-          <p class="or-bundle-note">Or <a href="https://seedwisecollection.com/lpsales">unlock the complete collection for $57</a> — save 25%</p>
+          <p class="or-bundle-note">Or <a href="https://seedwise.gumroad.com/l/ocgooj" data-gumroad-overlay-checkout="true">unlock the complete collection for $57</a> — save 25%</p>
         </div>
       </div>
     </div>
@@ -1183,15 +1189,15 @@
 
     <div class="sneak-grid">
       <div class="sneak-card">
-        <img src="images/Image_1-Flight_Plan_to_my_dreams.jpg" alt="The Flight Plan to My Dreams — goal-planning template from SeedWise" loading="lazy" width="900" height="700" style="width:100%;height:auto;display:block;">
+        <img src="images/sneak-peek-1.jpg" alt="The Flight Plan to My Dreams — goal-planning template from SeedWise" loading="lazy" width="900" height="700" style="width:100%;height:auto;display:block;border-radius:8px 8px 0 0;">
         <div class="sneak-caption">The "Flight Plan to My Dreams" — a step-by-step goal-planning template that turns big dreams into achievable savings milestones.</div>
       </div>
       <div class="sneak-card">
-        <img src="images/Image_2-_The_50_30_20_Rule.jpg" alt="The 50/30/20 Rule — budgeting framework for teens" loading="lazy" width="900" height="700" style="width:100%;height:auto;display:block;">
+        <img src="images/sneak-peek-2.jpg" alt="The 50/30/20 Rule — budgeting framework for teens" loading="lazy" width="900" height="700" style="width:100%;height:auto;display:block;border-radius:8px 8px 0 0;">
         <div class="sneak-caption">The 50/30/20 Rule — revised and supercharged for your teen's unique stage of life and financial potential.</div>
       </div>
       <div class="sneak-card">
-        <img src="images/Image_3_-Teen_Budget_expense_Tracker.PNG" alt="Teen Startup Income and Expense Tracker activity" loading="lazy" width="900" height="700" style="width:100%;height:auto;display:block;">
+        <img src="images/sneak-peek-3.jpg" alt="Teen Startup Income and Expense Tracker activity" loading="lazy" width="900" height="700" style="width:100%;height:auto;display:block;border-radius:8px 8px 0 0;">
         <div class="sneak-caption">The Teen Startup Income &amp; Expense Tracker — a hands-on ledger that builds real-world financial discipline from day one.</div>
       </div>
     </div>
@@ -1209,6 +1215,8 @@
     <div style="margin:36px auto 8px;max-width:700px;text-align:center;">
       <img src="images/collection-lineup.jpg" alt="The complete SeedWise Collection — all four volumes" loading="lazy" width="900" height="403" style="width:100%;height:auto;border-radius:10px;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.4));">
     </div>
+
+    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.1rem,2.5vw,1.35rem);font-weight:600;color:var(--almond-white);text-align:center;margin:28px 0 8px;letter-spacing:-0.3px;">The Complete SeedWise Collection</p>
 
     <div class="offer-box">
       <div class="mini-stack">
@@ -1299,6 +1307,11 @@
     </div>
 
     <div class="faq-item">
+      <h3>How is this different from free content about kids and money?</h3>
+      <p>Free content gives you ideas. SeedWise gives you a system. Each volume provides age-specific scripts, structured activities, and a progressive framework that builds on the previous stage — so you never have to wonder what's age-appropriate or where to start. It's the difference between reading about swimming and having a coach in the water with you.</p>
+    </div>
+
+    <div class="faq-item">
       <h3>I'm still building my own financial knowledge. Will I be able to use these?</h3>
       <p>Absolutely — that's exactly who these were designed for. Each chapter provides the language, the structure, and the activity, so you simply follow the guide. Many parents tell us they learned alongside their children and found the process rewarding for the whole family. The only prerequisite is willingness.</p>
     </div>
@@ -1323,10 +1336,6 @@
       <p>It's currently in development. Join our list below to be among the first to know when it's released. Several bilingual families have noted that the English edition also serves well as a dual-purpose tool for both financial and language learning.</p>
     </div>
 
-    <div class="faq-item">
-      <h3>How is this different from free content about kids and money?</h3>
-      <p>Free content gives you ideas. SeedWise gives you a system. Each volume provides age-specific scripts, structured activities, and a progressive framework that builds on the previous stage — so you never have to wonder what's age-appropriate or where to start. It's the difference between reading about swimming and having a coach in the water with you.</p>
-    </div>
   </div>
 </section>
 
@@ -1373,7 +1382,7 @@
 <footer role="contentinfo">
   <div class="container">
     <p style="margin-bottom:6px;">&copy; 2026 SeedWise Collection</p>
-    <p style="margin-bottom:0;">hello@seedwisecollection.com &nbsp;&middot;&nbsp; <a href="terms.html" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="privacy.html" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="cookies.html" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Cookies Policy</a></p>
+    <p style="margin-bottom:0;">hello@seedwisecollection.com &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/terms-of-service" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/privacy-policy" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/cookie-policy" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Cookies Policy</a></p>
   </div>
 </footer>
 
