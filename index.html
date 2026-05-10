@@ -263,16 +263,28 @@
     font-weight: 300;
   }
   .social-proof-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+    background: rgba(247,243,232,0.04);
+    border: 1px solid rgba(247,243,232,0.1);
+    border-radius: 12px;
+    padding: 16px 24px;
+  }
+  .proof-shield {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(73,160,120,0.1);
+    border: 1.5px solid var(--growth-green);
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 32px;
-    background: rgba(247,243,232,0.05);
-    border: 1px solid rgba(247,243,232,0.1);
-    border-radius: 10px;
-    padding: 14px 20px;
+    justify-content: center;
+    font-size: 1rem;
   }
-  .proof-text { font-size: 0.88rem; color: rgba(247,243,232,0.88); font-weight: 400; }
+  .proof-text { font-size: 0.9rem; color: rgba(247,243,232,0.9); font-weight: 400; line-height: 1.4; }
   .proof-text strong { color: var(--warm-gold); font-weight: 600; }
   .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 
@@ -919,7 +931,8 @@
         <p class="subtitle">The complete age-by-age roadmap — from first coins at age 3 to first investments at 18+. Four volumes of ready-to-use scripts, hands-on activities, and real-world exercises that make financial wisdom feel natural.</p>
 
         <div class="social-proof-strip">
-          <span class="proof-text" style="display:flex;align-items:center;gap:8px;"><span style="color:var(--warm-gold);font-size:1rem;">&#x1F6E1;&#xFE0F;</span> Built for intentional parents. Backed by a <strong>30-day guarantee</strong>.</span>
+          <div class="proof-shield">&#x1F6E1;&#xFE0F;</div>
+          <span class="proof-text">Built for intentional parents.<br>Backed by a <strong>30-day guarantee</strong>.</span>
         </div>
 
         <div class="hero-buttons">
@@ -1216,7 +1229,7 @@
       <img src="images/collection-lineup.jpg" alt="The complete SeedWise Collection — all four volumes" loading="lazy" width="900" height="403" style="width:100%;height:auto;border-radius:10px;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.4));">
     </div>
 
-    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.1rem,2.5vw,1.35rem);font-weight:600;color:var(--almond-white);text-align:center;margin:28px 0 8px;letter-spacing:-0.3px;">The Complete SeedWise Collection</p>
+    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.35rem,3.5vw,1.75rem);font-weight:700;color:var(--almond-white);text-align:center;margin:32px 0 12px;letter-spacing:-0.3px;">The Complete SeedWise Collection</p>
 
     <div class="offer-box">
       <div class="mini-stack">
@@ -1382,7 +1395,7 @@
 <footer role="contentinfo">
   <div class="container">
     <p style="margin-bottom:6px;">&copy; 2026 SeedWise Collection</p>
-    <p style="margin-bottom:0;">hello@seedwisecollection.com &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/terms-of-service" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/privacy-policy" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/cookie-policy" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Cookies Policy</a></p>
+    <p style="margin-bottom:0;">hello@seedwisecollection.com &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/terms-of-service" target="_blank" rel="noopener" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/privacy-policy" target="_blank" rel="noopener" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="https://seedwisecollection.com/cookie-policy" target="_blank" rel="noopener" style="color:var(--muted-text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;">Cookies Policy</a></p>
   </div>
 </footer>
 
