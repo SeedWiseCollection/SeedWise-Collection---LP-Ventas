@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://seedwise.com/sitemap.xml
+Disallow: /thank-you
+Disallow: /terms
+Disallow: /privacy
+Disallow: /cookies
+Sitemap: https://seedwisecollection.com/sitemap.xml
