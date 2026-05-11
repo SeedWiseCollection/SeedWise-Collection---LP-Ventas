@@ -844,12 +844,86 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    section { padding: 56px 0; }
-    .hero { padding: 56px 0; }
-    .hero-layout { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    section { padding: 48px 0; }
+    .container { padding: 0 20px; }
+    .container-narrow { padding: 0 20px; }
+
+    /* Hero */
+    .hero { padding: 48px 0; }
+    .hero-layout { grid-template-columns: 1fr; gap: 28px; text-align: center; }
     .hero-visual { min-height: auto; }
-    .hero-mockup-img { max-width: 320px; }
+    .hero-mockup-img { max-width: 300px; margin: 0 auto; }
     .hero-buttons { justify-content: center; }
+    .cta-primary { width: 100%; text-align: center; padding: 16px 28px; font-size: 0.88rem; }
+    h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+
+    /* Agitation */
+    .pain-card { padding: 24px 20px; }
+
+    /* Comparison — stack vertically on mobile */
+    .comparison-grid { grid-template-columns: 1fr; gap: 16px; }
+    .comparison-col { padding: 24px 20px; }
+    .comparison-header { font-size: 0.72rem; letter-spacing: 1.5px; }
+    .comparison-item { font-size: 0.9rem; padding: 12px 0; }
+    .comparison-icon { width: 24px; height: 24px; font-size: 0.7rem; margin-right: 10px; }
+
+    /* Book Cards — stack image above content */
+    .book-card-inner { flex-direction: column !important; }
+    .book-mockup-col {
+      width: 100% !important;
+      flex-shrink: 1 !important;
+      min-height: 200px !important;
+      padding: 28px 20px !important;
+    }
+    .book-mockup-col img { max-width: 180px; margin: 0 auto; }
+    .book-content-col { padding: 24px 20px 20px; }
+    .book-card .book-title { font-size: 1.2rem; }
+    .book-bullets li { font-size: 0.88rem; }
+    .book-footer { flex-direction: column; gap: 12px; text-align: center; }
+    .book-footer .book-cta { width: 100%; text-align: center; padding: 12px 20px; }
+    .or-bundle-note { text-align: center; }
+
+    /* Timeline */
+    .timeline-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .timeline-stop-age { font-size: 1.4rem; }
+
+    /* Sneak Peek */
+    .sneak-grid { grid-template-columns: 1fr; gap: 16px; max-width: 400px; margin: 28px auto 0; }
+    .sneak-caption { font-size: 0.82rem; padding: 14px 16px; }
+
+    /* Value Stack */
+    .value-item { flex-direction: column; gap: 6px; text-align: center; }
+    .value-item .value-label { min-width: auto; }
+
+    /* Offer */
+    .offer-box { padding: 28px 20px; }
+    .offer-price { font-size: clamp(2.2rem, 10vw, 3rem); }
+    .mini-stack-item { font-size: 0.85rem; padding: 10px 0; }
+
+    /* About */
+    .about-cols { grid-template-columns: 1fr; gap: 20px; }
+
+    /* Guarantee */
+    .guarantee-box { padding: 28px 20px; }
+
+    /* FAQ */
+    .faq-item h3 { font-size: 0.95rem; }
+    .faq-item p { font-size: 0.9rem; }
+
+    /* Final CTA */
+    .final-cta h2 { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+    .letter-box { padding: 28px 20px; }
+
+    /* Lead Magnet Section */
+    .ml-embedded { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .comparison-grid { grid-template-columns: 1fr; gap: 14px; }
+    .timeline-grid { grid-template-columns: 1fr; gap: 12px; }
+    .hero-mockup-img { max-width: 260px; }
+    h1 { font-size: clamp(1.4rem, 8vw, 1.8rem); }
+  }
 </style>
 </head>
 <body>
